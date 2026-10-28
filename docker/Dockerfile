@@ -2,7 +2,7 @@
 # Nginx Builder
 #############
 
-FROM debian:trixie-slim AS nginxbuilder
+FROM debian:trixie-slim@sha256:89c1ea91e897f0fe0a3731595330bc45b8bdef4047464a07116f891a94054b31 AS nginxbuilder
 
 ARG OPENRESTY_VERSION
 ARG LUA_VERSION
@@ -35,7 +35,7 @@ RUN /tmp/build-openresty.sh
 # Final Image
 #############
 
-FROM debian:trixie-slim AS final
+FROM debian:trixie-slim@sha256:89c1ea91e897f0fe0a3731595330bc45b8bdef4047464a07116f891a94054b31 AS final
 LABEL maintainer="Jamie Curnow <jc@jc21.com>"
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
