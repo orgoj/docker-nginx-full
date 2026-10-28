@@ -12,10 +12,12 @@ RUN apt-get update \
 	&& apt-get install -y \
 	build-essential \
 	ca-certificates \
+	libbrotli-dev \
 	libncurses-dev \
 	libpcre2-dev \
 	libreadline-dev \
 	libssl-dev \
+	libzstd-dev \
 	openssl unzip \
 	wget \
 	zlib1g-dev \
@@ -51,6 +53,7 @@ RUN apt-get update \
 	curl \
 	figlet \
 	jq \
+	libbrotli1 \
 	libncurses6 \
 	libpcre2-8-0 \
 	libreadline8 \
