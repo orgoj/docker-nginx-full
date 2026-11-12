@@ -2,7 +2,7 @@
 # Nginx Builder
 #############
 
-FROM debian:trixie-slim@sha256:89c1ea91e897f0fe0a3731595330bc45b8bdef4047464a07116f891a94054b31 AS nginxbuilder
+FROM debian:trixie-slim@sha256:a72b4433de1cf7d6bae0c4cee74d0547f58601a643b3375f070c51600d63b6b2 AS nginxbuilder
 
 ARG OPENRESTY_VERSION
 ARG LUA_VERSION
@@ -41,7 +41,7 @@ RUN /tmp/build-openresty.sh
 # Final Image
 #############
 
-FROM debian:trixie-slim@sha256:89c1ea91e897f0fe0a3731595330bc45b8bdef4047464a07116f891a94054b31 AS final
+FROM debian:trixie-slim@sha256:a72b4433de1cf7d6bae0c4cee74d0547f58601a643b3375f070c51600d63b6b2 AS final
 LABEL maintainer="Jamie Curnow <jc@jc21.com>"
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
@@ -51,6 +51,7 @@ RUN echo "Base: debian:trixie-slim, ${TARGETPLATFORM:-linux/amd64}" > /built-for
 
 # OpenResty uses LuaJIT which has a dependency on GCC
 RUN apt-get update \
+	&& apt-get upgrade -y \
 	&& apt-get install -y --no-install-recommends \
 	apache2-utils \
 	ca-certificates \
